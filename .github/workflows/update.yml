@@ -1,33 +1,34 @@
-name: Update Trimmed Playlist
+name: Update Trimmed Playlist and EPG
 on:
   schedule:
     - cron: '0 0,12 * * *' 
-  workflow_dispatch: # Allows you to run it manually
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
       - name: Install dependencies
         run: pip install requests lxml
 
-      - name: Run script
-        run: |
-          python trim_playlist.py
-          python trim_epg.py
+      - name: Run All-in-One Script
+        run: python update_all.py
 
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add trimmed.m3u trimmed_epg.xml.gz
-          git commit -m "Update trimmed playlist and EPG" || exit 0
+          git commit -m "Automated update: M3U and EPG" || exit 0
           git push
