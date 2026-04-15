@@ -20,8 +20,7 @@ jobs:
         run: pip install requests lxml
 
       - name: Run script
-        run: python trim_playlist.py
-        run: python trim_epg.py
+        run: python trim_playlist.py, python trim_epg.py
 
       - name: Commit and push changes
         run: |
