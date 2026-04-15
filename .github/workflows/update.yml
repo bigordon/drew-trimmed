@@ -28,6 +28,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add trimmed.m3u
-          git commit -m "Update trimmed playlist" || exit 0
+          git add trimmed.m3u trimmed_epg.xml
+          git commit -m "Update trimmed playlist and EPG" || exit 0
           git push
