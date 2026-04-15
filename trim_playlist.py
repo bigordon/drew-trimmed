@@ -10,7 +10,7 @@ def main():
         lines = response.text.splitlines()
 
         # Keywords to exclude
-        exclude = ["ANIME", "VOD", "ADULT", "MOVIES", "SERIES", "DREW", "MUSIC"]
+        exclude_groups = ["ANIME", "VOD", "ADULT", "MOVIES", "SERIES", "DREW", "MUSIC", "AU", "CA", "EPL", "EU", "NZ", "UK", "JAPANTV", "AUSTRALIA", "CANADA", "FRANCE", "MEXICO", "NEW ZELAND", "SPAIN", "UNITED KINGDOM", "ARGENTINA", "BRAZIL", "CHILE", "DENMARK", "ITALY", "NORWAY", "SWEDEN", "INDIA", "SOUTH KOREA", "SWITZERLAND", "TVPASS"]
         
         filtered = [lines[0]] # Keep #EXTM3U
         
