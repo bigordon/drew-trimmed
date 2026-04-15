@@ -1,0 +1,31 @@
+name: Update Trimmed Playlist
+on:
+  schedule:
+    - cron: '0 0,12 * * *' 
+  workflow_dispatch: # Allows you to run it manually
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run script
+        run: python trim_playlist.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add trimmed.m3u
+          git commit -m "Update trimmed playlist" || exit 0
+          git push
