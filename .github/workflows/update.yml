@@ -17,7 +17,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests lxml
 
       - name: Run script
         run: python trim_playlist.py
