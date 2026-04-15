@@ -21,6 +21,7 @@ jobs:
 
       - name: Run script
         run: python trim_playlist.py
+        run: python trim_epg.py
 
       - name: Commit and push changes
         run: |
